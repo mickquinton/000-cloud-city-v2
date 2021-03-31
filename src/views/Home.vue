@@ -12,7 +12,6 @@ export default {
   components: {
     "main-header": mainHeader,
   }
-
 }
 </script>
 
