@@ -3,12 +3,12 @@
     <!------- Logged out ------->
     <div class="wrap-user-logged-out" v-if="isUserin == false">
       <base-button class="button" :btnLabel="btnLabels[0].forLogin" @click="logIn()"></base-button>
-      <div class="loggedout-icon" @click="toggleDialog()"></div>
+      <div class="loggedout-icon" ></div>
     </div>
 
     <!------- Logged in ------->
     <div class="wrap-user-logged-in" v-if="isUserin == true">
-      <div class="loggedin-icon" @click="toggleDialog()"></div>
+      <div class="loggedin-icon"></div>
     </div>
   </div>
 </template>
@@ -17,6 +17,7 @@
 import baseButton from "../../components/common/baseButton.vue"
 
 export default {
+
   components: {
     "base-button": baseButton
   },
@@ -24,23 +25,27 @@ export default {
   data() {
     return {
       btnLabels: [{ forLogin: "LOG IN" }, { forLogout: "LOG OUT" }],
-      isUserin: false
+      isUserin: false,
+      userStatus: ''
     }
   },
 
   methods: {
     logIn() {
       this.isUserin = true
+    },
+
+    showMenu(userStatus) {
+      this.isUserin = true
+      this.userStatus = userStatus
     }
   },
 
   props: {
     isDialogshown: Boolean,
-    userStatus: String
-    // isLoggedin: Boolean,
+    // userStatus: String,
+    isLoggedin: Boolean,
   },
-
-  inject: ["toggleDialog"]
 }
 </script>
 

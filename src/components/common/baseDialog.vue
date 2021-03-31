@@ -1,7 +1,7 @@
 <template>
   <section class="wrap-dialog" :dialog="isDialogshown">
     <div class="sideSheet">
-      <!-- <component :is="userType"></component> -->
+      <!-- <component :is="dialogComponent"></component> -->
       <user-bl v-if="isLoggedin == false"></user-bl>
       <user-al v-if="isLoggedin == true"></user-al>
     </div>
@@ -13,7 +13,6 @@ import userBL from "../../components/theHeader/userBL.vue"
 import userAL from "../../components/theHeader/userAL.vue"
 
 export default {
-
   components: {
     "user-bl": userBL,
     "user-al": userAL
@@ -21,15 +20,13 @@ export default {
 
   props: {
     isDialogshown: Boolean,
-    userStatus: String,
     isLoggedin: Boolean,
-  }
+  },
+
 }
 </script>
 
 <style lang="scss">
-
-
 // <--- SIDE SHEET ---> //
 
 .wrap-dialog {
