@@ -1,5 +1,4 @@
 <template>
-  <div class="close" @click="toggleDialog()">CLOSE</div>
   <div>
     <p>Yay! I am logged in.</p>
   </div>

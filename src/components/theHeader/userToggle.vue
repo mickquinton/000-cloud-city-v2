@@ -2,13 +2,14 @@
   <div class="wrap-user-info">
     <!------- Logged out ------->
     <div class="wrap-user-logged-out" v-if="isUserin == false">
-      <base-button class="button" :btnLabel="btnLabels[0].forLogin" @click="logIn()"></base-button>
-      <div class="loggedout-icon" ></div>
+      <base-button class="button" :btnLabel="btnLabels[0].forLogin" @click="logInOut()"></base-button>
+      <div class="icon" @click="toggleDialog()"></div>
     </div>
 
     <!------- Logged in ------->
     <div class="wrap-user-logged-in" v-if="isUserin == true">
-      <div class="loggedin-icon"></div>
+      <base-button class="button" :btnLabel="btnLabels[1].forLogout" @click="logInOut()"></base-button>
+      <div class="icon" @click="toggleDialog()"></div>
     </div>
   </div>
 </template>
@@ -26,26 +27,21 @@ export default {
     return {
       btnLabels: [{ forLogin: "LOG IN" }, { forLogout: "LOG OUT" }],
       isUserin: false,
-      userStatus: ''
     }
   },
 
   methods: {
-    logIn() {
-      this.isUserin = true
-    },
-
-    showMenu(userStatus) {
-      this.isUserin = true
-      this.userStatus = userStatus
+    logInOut() {
+      this.isUserin = !this.isUserin
     }
   },
 
   props: {
     isDialogshown: Boolean,
-    // userStatus: String,
     isLoggedin: Boolean,
   },
+
+  inject: ['toggleDialog']
 }
 </script>
 
@@ -76,7 +72,7 @@ export default {
       }
     }
 
-    .loggedout-icon {
+    .icon {
       cursor: pointer;
       background-image: url("../../assets/icon-grid-menu-light.svg");
       background-repeat: no-repeat;
@@ -98,7 +94,23 @@ export default {
   .wrap-user-logged-in {
     display: flex;
 
-    .loggedin-icon {
+    .button {
+      cursor: pointer;
+      font-weight: 600;
+      background-color: $clr-swatchPrimary-850;
+      padding: $UI-size-reg $UI-size-lg $UI-size-reg $UI-size-lg;
+      margin: 0 $UI-size-xl 0 0;
+      border-radius: $UI-size-reg;
+      min-width: $UI-size-kilo-xxl;
+      text-align: center;
+      font-size: $font-body2;
+
+      &:hover {
+        background-color: rgba($clr-swatchPrimary-800, 0.6);
+      }
+    }
+
+    .icon {
       cursor: pointer;
       background-image: url("../../assets/icon-user-light.svg");
       background-repeat: no-repeat;

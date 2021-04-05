@@ -34,6 +34,7 @@ export default {
       isDialogshown: false,
       userStatus: "",
       isLoggedin: false,
+      
     }
   },
 
@@ -42,24 +43,11 @@ export default {
     toggleDialog() {
       this.isDialogshown = !this.isDialogshown
     },
-
-    //   logIn(userStatus) {
-    //     this.isLoggedin = !this.isLoggedin
-    //     this.userStatus = userStatus
-    //   },
-
-    //   logOut(userStatus) {
-    //     this.isDialogshown = !this.isDialogshown
-    //     this.userStatus = userStatus
-    //     this.isLoggedin = false
-    //   }
   },
 
   provide() {
     return {
       toggleDialog: this.toggleDialog
-      // logIn: this.logIn,
-      // logOut: this.logOut,
     }
   }
 }
